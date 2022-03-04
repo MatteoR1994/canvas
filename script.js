@@ -46,30 +46,32 @@ context.fill();
 
 const sprites = [];
 
-// for (let i = 0; i < 200; i++) {
+// for (let i = 0; i < 20; i++) {
 //     const x = Math.random() * (canvas.width - 1);
 //     const y = Math.random() * (canvas.height - 1);
 //     const width = (Math.random() * 99) + 1;
 //     const height = (Math.random() * 99) + 1;
-//     // const sX = Math.random() * 10;
-//     // const sY = Math.random() * 10;
-//     const sX = MathC.randomFloatFromInterval(-1, 1);
-//     const sY = MathC.randomFloatFromInterval(-1, 1);
+//     const sX = Math.random() * 10;
+//     const sY = Math.random() * 10;
+//     // const sX = MathC.randomFloatFromInterval(-1, 1);
+//     // const sY = MathC.randomFloatFromInterval(-1, 1);
 //     const c = getRandomColor();
 //     // const sprite = new Sprite(x, y, width, height, sX, sY, c);
 //     // const sprite = new Sprite(x, y, 2, 2, sX, sY, c);
-//     const sprite = new RectSprite(canvas.width / 2, canvas.height / 2, 1, 1, sX, sY, c);
+//     //const sprite = new RectSprite(canvas.width / 2, canvas.height / 2, 1, 1, sX, sY, c);
+//     const sprite = new RectSprite(x, y, width, height, sX, sY, c);
 //     sprites.push(sprite);
 // }
 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 15; i++) {
     const radius = (Math.random() * 99) + 1;
     const x = MathC.randomIntFromInterval(radius, canvas.width - radius);
     const y = MathC.randomIntFromInterval(radius, canvas.height - radius);
-    const sX = MathC.randomFloatFromInterval(-1, 1);
-    const sY = MathC.randomFloatFromInterval(-1, 1);
+    const sX = MathC.randomFloatFromInterval(-2, 2);
+    const sY = MathC.randomFloatFromInterval(-2, 2);
     const c = getRandomColor();
-    const sprite = new CircleSprite(x, y, 1, sX, sY, c);
+    // const sprite = new CircleSprite(x, y, 1, sX, sY, c);
+    const sprite = new CircleSprite(x, y, radius, sX, sY, c);
     sprites.push(sprite);
 }
 
@@ -83,14 +85,14 @@ function getRandomColor() {
 }
 
 setInterval(() => {
-    //context.clearRect(0, 0, canvas.width, canvas.height);
+    context.clearRect(0, 0, canvas.width, canvas.height);
     // sprite.draw(context);
     // sprite2.draw(context);
     // sprite.update(canvas);
     // sprite2.update(canvas);
     for (const sprite of sprites) {
         sprite.draw(context);
-        // sprite.update(canvas);
-        sprite.randomUpdate(canvas);
+        sprite.update(canvas);
+        // sprite.randomUpdate(canvas);
     }
 }, 30);
